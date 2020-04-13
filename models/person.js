@@ -9,7 +9,7 @@ mongoose.set('useFindAndModify',false)
 mongoose.set('useCreateIndex', true)
 
 mongoose.connect(url, { useNewUrlParser: true, useUnifiedTopology: true })
-  .then(result => {
+  .then(() => {
     console.log('connected to MongoDB')
   })
   .catch((error) => {
@@ -33,7 +33,7 @@ const personSchema = new mongoose.Schema({
 
 })
 
-personSchema.plugin(uniqueValidator, {message: `Error, expected {PATH} to be unique.`})
+personSchema.plugin(uniqueValidator, { message: 'Error, expected {PATH} to be unique.' })
 
 personSchema.set('toJSON', {
   transform: (document, returnedObject) => {
